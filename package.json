@@ -1,0 +1,21 @@
+{
+  "name": "image-process",
+  "version": "1.0.0",
+  "description": "POC demo",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+	"test": "nodemon server.js",
+	"dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.3",
+    "serve-favicon": "^2.4.2",
+	"nodemon": "^1.11.0"
+  },
+  "author": "pranabpadhy",
+  "license": "ISC"
+}

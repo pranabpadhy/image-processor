@@ -1,0 +1,26 @@
+.header-image {
+    background: url('/public/images/header.png') no-repeat center center;
+    background-size: 100% 100%;
+	background-color: lightpink;
+}
+.affix {
+    top:0px;
+    position: fixed;
+   	width: 100%;
+	background-color:lightgray;
+	z-index:777;
+}
+#note h1 {
+	border-style:solid; 
+	border-color:blue;
+	border-width: 0px 0px 0px 10px;
+	background-color:aqua;
+	max-width:100%;
+}
+#update  h1{
+	border-style:solid; 
+	border-color:blue;
+	border-width: 0px 0px 0px 10px;
+	background-color:aqua;
+	max-width:100%;
+}

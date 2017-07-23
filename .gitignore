@@ -1,2 +1,4 @@
 #ignore node_modules
 *node_modules
+*/web/images/downloads
+*/web/images/uploads

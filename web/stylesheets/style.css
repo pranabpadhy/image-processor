@@ -1,10 +1,17 @@
 .header-image {
-    background: url('/public/images/header.png') no-repeat center center;
+    background: url('/web/images/header.png') no-repeat center center;
     background-size: 100% 100%;
 	background-color: lightpink;
 }
 .affix {
     top:0px;
+    position: fixed;
+   	width: 100%;
+	background-color:lightgray;
+	z-index:777;
+}
+.affix2 {
+    top:50px;
     position: fixed;
    	width: 100%;
 	background-color:lightgray;

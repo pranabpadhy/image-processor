@@ -44,7 +44,7 @@ $(document).ready(function () {
 
 var load = function (page) {
 	console.log(page);
-	var file = '../../html'+page+'.html';
+	var file = '/web/html'+page+'.html';
 	$('#pages').load(file, function () {
 		//console.log(window.location.href);
 		initPage(page.split('/')[1]);

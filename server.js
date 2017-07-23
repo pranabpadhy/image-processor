@@ -6,18 +6,18 @@ var express = require('express'),
 
 var app = express();
 
-var utils = require('../utils/utils.js');
+var utils = require('./utils/utils.js');
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(favicon(path.join(__dirname, '../web/images', 'favicon.ico')));
-app.use('/web', express.static(path.join(__dirname, '../web')));
+app.use(favicon(path.join(__dirname, '/web/images', 'favicon.ico')));
+app.use('/web', express.static(path.join(__dirname, '/web')));
 
 app.get('/', function (req, res) {
 	res.redirect('/index');
 });
 
 app.get('/index', function (req, res) {
-	utils.readFile(__dirname+'/../web/html/index.html', function(err, data){
+	utils.readFile(__dirname+'/web/html/index.html', function(err, data){
 		if(err) {
 			console.log(err);
 			res.writeHead(404);
@@ -38,7 +38,7 @@ app.post('/send', function (req, res) {
 app.post('/loadPage', function (req, res) {
 	var page = req.body.page;
 	var pageData = {};
-	utils.readFile(__dirname+'/../web/html'+page+'.html', function(err, data){
+	utils.readFile(__dirname+'/web/html'+page+'.html', function(err, data){
 		if(err) {
 			console.log(err);
 			pageData['error'] = "404 Page not found";
@@ -53,7 +53,7 @@ app.post('/loadPage', function (req, res) {
 
 app.get('/news', function (req, res) {
 	var news = {};
-	utils.readFile(__dirname+'/../modules/utils/news.json', function(err, data){
+	utils.readFile(__dirname+'/utils/news.json', function(err, data){
 		if(err) {
 			console.log(err);
 			news['error'] = "No news found";
@@ -69,20 +69,20 @@ app.get('/download', function (req, res) {
 	var data = req.body;
 	var filePaths = [];
 	var download = {};
-	utils.readFile(__dirname+'/../modules/utils/imageURL.json', function (error, result) {
+	utils.readFile(__dirname+'/utils/imageURL.json', function (error, result) {
 		if(error) {
 			console.log("readErr:", error);
 			download["error"] = "Couldn't download pictures.";
 		} else {
 			var urlJson = JSON.parse(result);
-			utils.makeDirectory(__dirname+'/../web/images/downloads', function (dirErr, dirRes) {
+			utils.makeDirectory(__dirname+'/web/images/downloads', function (dirErr, dirRes) {
 				console.log("typeof(dirRes):", typeof(dirRes), "\ndirRes:", dirRes);
 				if(dirErr) {
 					console.log("dirErr:", dirErr);
 					download["error"] = dirErr;
 				} else {
 					var fileName, i = 0;
-					var filePath = __dirname+'/../web/images/downloads/';
+					var filePath = __dirname+'/web/images/downloads/';
 					if(typeof(dirRes.res) == "object") {
 						dirRes.res.forEach(function (file) {
 							i++;

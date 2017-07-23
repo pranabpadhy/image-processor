@@ -44,35 +44,6 @@ var imagesReady = function() {
 	});
 }
 
-/*var send = function () {
-	console.log("images:", images, "\ncount:", count);
-	if(images.length == 0) errorFunction("Please Selecte images");
-	else {
-		$('img').each(function () {
-			$(this).prop('selected', false);
-		});
-		$('#send').prop('disabled', true);
-		$.ajax({
-		    url: "/send",
-		    type: "POST",
-		    dataType: "json",
-		    data: {"images":images},
-		    success: function(data) {
-		    	images = [];
-				count = 0;
-		      	if(data.result) {
-					var html = '<span style="color:green">Sent image(s) are:</span><br/><br/>';
-					data.result.images.forEach(function (image) {
-						html += '<img src="'+image+'" style="width:100px;height:50px;">&nbsp;&nbsp;&nbsp;&nbsp;'
-					});
-					$("#result").html(html);
-		      	}
-				if(data.error) errorFunction(data.error);
-			}
-	  	});
-	}
-}*/
-
 var errorFunction = function (error) {
 	$("#result").html('<span style="color:red">'+error+'</span>');
 }
@@ -80,15 +51,20 @@ var errorFunction = function (error) {
 var displayImages = function (result, callback) {
 	console.log(result);
 	var div, section, article, img, articleArr = [], sectionArr = [];
-	result.forEach(function (url, i) {	
-		img = (i+1)+':&nbsp;'+url.split("/")[url.split("/").length-1]+'<br/><img src="'+url+'" id="img'+(i+1)+'" class="img-thumbnail" style="width: 700px; height: 500px" />'
+	result.forEach(function (url, i) {
+		if(url.indexOf('.txt') == -1) {
+			img = (i+1)+':&nbsp;'+url.split("/")[url.split("/").length-1]+'<br/><img src="'+url+'" id="img'+(i+1)+'" class="img-thumbnail" style="width: 700px; height: 500px" />';
+		}
 		article = '<article class="col-md-6">'+img+'</article>';
 		articleArr.push(article);
 		if(i % 2 != 0) {
-			var newArticle = articleArr.join('');
-			articleArr = [];
-			section = '<section class="row">'+newArticle+'</section>';
+			section = '<section class="row">'+articleArr.join('')+'</section>';
 			sectionArr.push(section);
+			articleArr = [];
+		} else if(i == result.length-1) {
+			section = '<section class="row">'+articleArr.join('')+'</section>';
+			sectionArr.push(section);
+			articleArr = [];
 		}
 	});
 	div = sectionArr.join('');

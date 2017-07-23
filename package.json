@@ -5,16 +5,17 @@
   "main": "server.js",
   "private": true,
   "scripts": {
-	"test": "nodemon server.js",
-	"dev": "nodemon server.js",
+    "test": "nodemon server.js",
+    "dev": "nodemon server.js",
     "start": "node server.js"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.3",
-    "serve-favicon": "^2.4.2",
-	"nodemon": "^1.11.0"
+    "formidable": "^1.1.1",
+    "nodemon": "^1.11.0",
+    "serve-favicon": "^2.4.2"
   },
   "author": "pranabpadhy",
   "license": "ISC"

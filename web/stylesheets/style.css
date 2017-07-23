@@ -10,13 +10,6 @@
 	background-color:lightgray;
 	z-index:777;
 }
-.affix2 {
-    top:50px;
-    position: fixed;
-   	width: 100%;
-	background-color:lightgray;
-	z-index:777;
-}
 #note h1 {
 	border-style:solid; 
 	border-color:blue;
